@@ -1,11 +1,12 @@
 import daos.CarDAO;
+import daos.Connector;
 import models.Car;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+
 
     public static void main(String[] args) {
         Connector connector = new Connector("jdbc:postgresql://localhost/crudlab", "ryan", "");
@@ -25,7 +26,7 @@ public class Main {
 
         cars = carDAO.findAll();
 
-        carDAO.delete(11);
+        carDAO.delete((int) cars.get(cars.size() - 1).getId());
 
         cars = carDAO.findAll();
     }
